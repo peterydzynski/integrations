@@ -82,3 +82,7 @@
   name: threat.software.name
 - external: ecs
   name: threat.software.reference
+- external: ecs
+  name: threat.indicator.name
+- external: ecs
+  name: labels

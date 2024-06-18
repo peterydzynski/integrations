@@ -17,22 +17,35 @@ An example event for `log` looks as following:
 
 ```json
 {
-    "@timestamp": "2023-11-03T07:34:39.717Z",
+    "@timestamp": "2024-03-14T18:59:23.000Z",
     "agent": {
-        "ephemeral_id": "95a13cca-6d60-4c87-bf43-c3e7bbbfaced",
-        "id": "acba78ef-1401-4689-977c-d8c2e5d6a8fa",
+        "ephemeral_id": "4b522414-3f7d-4cec-a7f7-7df2a87de0c9",
+        "id": "d2a14a09-96fc-4f81-94ef-b0cd75ad71e7",
         "name": "docker-fleet-agent",
         "type": "filebeat",
-        "version": "8.10.1"
+        "version": "8.13.0"
     },
     "aws": {
         "s3": {
             "bucket": {
-                "arn": "arn:aws:s3:::elastic-package-cisco-umbrella-bucket-94360",
-                "name": "elastic-package-cisco-umbrella-bucket-94360"
+                "arn": "arn:aws:s3:::elastic-package-cisco-umbrella-bucket-37380",
+                "name": "elastic-package-cisco-umbrella-bucket-37380"
             },
             "object": {
-                "key": "new_object_key"
+                "key": "auditlogs.log"
+            }
+        }
+    },
+    "cisco": {
+        "umbrella": {
+            "audit": {
+                "after": [
+                    "includeAuditLog: 1"
+                ],
+                "after_values": {
+                    "includeAuditLog": "1"
+                },
+                "type": "logexportconfigurations"
             }
         }
     },
@@ -42,26 +55,30 @@ An example event for `log` looks as following:
     },
     "data_stream": {
         "dataset": "cisco_umbrella.log",
-        "namespace": "ep",
+        "namespace": "27145",
         "type": "logs"
     },
     "ecs": {
         "version": "8.11.0"
     },
     "elastic_agent": {
-        "id": "acba78ef-1401-4689-977c-d8c2e5d6a8fa",
+        "id": "d2a14a09-96fc-4f81-94ef-b0cd75ad71e7",
         "snapshot": false,
-        "version": "8.10.1"
+        "version": "8.13.0"
     },
     "event": {
+        "action": "update",
         "agent_id_status": "verified",
-        "category": "network",
+        "category": [
+            "configuration"
+        ],
         "dataset": "cisco_umbrella.log",
-        "ingested": "2023-11-03T07:34:41Z",
+        "id": "1757843536",
+        "ingested": "2024-06-12T03:03:50Z",
         "kind": "event",
-        "original": "\"2020-07-23 23:48:56\",\"Elastic Machine\",\"192.168.1.1\",\"67.43.156.12\",\"81.2.69.144\",\"\",\"ALLOWED\",\"https://elastic.co/blog/ext_id=Anyclip\",\"https://google.com/elastic\",\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36\",\"200\",\"850\",\"\",\"\",\"\",\"Business Services\",\"AVDetectionName\",\"Malicious\",\"MalwareName\",\"\",\"\",\"Roaming Computers\",\"\"",
+        "original": "\"1757843536\",\"2024-03-14 18:59:23\",\"admin@company.com\",\"Administrator\",\"logexportconfigurations\",\"update\",\"81.2.69.144\",\"\",\"includeAuditLog: 1\n\"",
         "type": [
-            "connection"
+            "change"
         ]
     },
     "input": {
@@ -69,21 +86,49 @@ An example event for `log` looks as following:
     },
     "log": {
         "file": {
-            "path": "https://elastic-package-cisco-umbrella-bucket-94360.s3.us-east-1.amazonaws.com/new_object_key"
+            "path": "https://elastic-package-cisco-umbrella-bucket-37380.s3.us-east-1.amazonaws.com/auditlogs.log"
         },
-        "offset": 0
+        "offset": 529
     },
     "observer": {
         "product": "Umbrella",
         "vendor": "Cisco"
     },
+    "related": {
+        "ip": [
+            "81.2.69.144"
+        ],
+        "user": [
+            "Administrator"
+        ]
+    },
+    "source": {
+        "address": "81.2.69.144",
+        "geo": {
+            "city_name": "London",
+            "continent_name": "Europe",
+            "country_iso_code": "GB",
+            "country_name": "United Kingdom",
+            "location": {
+                "lat": 51.5142,
+                "lon": -0.0931
+            },
+            "region_iso_code": "GB-ENG",
+            "region_name": "England"
+        },
+        "ip": "81.2.69.144"
+    },
     "tags": [
         "preserve_original_event",
         "cisco-umbrella",
         "forwarded"
-    ]
+    ],
+    "user": {
+        "email": "admin@company.com",
+        "id": "admin@company.com",
+        "name": "Administrator"
+    }
 }
-
 ```
 
 **Exported fields**
@@ -99,7 +144,9 @@ An example event for `log` looks as following:
 | cisco.umbrella.amp_malware_name | If Malicious, the name of the malware according to AMP. | keyword |
 | cisco.umbrella.amp_score | The score of the malware from AMP. This field is not currently used and will be blank. | keyword |
 | cisco.umbrella.audit.after | The policy or setting after the change was made. | keyword |
+| cisco.umbrella.audit.after_values.\* | The individual values of the policy or setting after the change was made. | object |
 | cisco.umbrella.audit.before | The policy or setting before the change was made. | keyword |
+| cisco.umbrella.audit.before_values.\* | The individual values of the policy or setting before the change was made. | object |
 | cisco.umbrella.audit.type | Where the change was made, such as settings or a policy. | keyword |
 | cisco.umbrella.av_detections | The detection name according to the antivirus engine used in file inspection. | keyword |
 | cisco.umbrella.blocked_categories | The categories that resulted in the destination being blocked. Available in version 4 and above. | keyword |

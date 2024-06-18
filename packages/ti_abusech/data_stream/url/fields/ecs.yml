@@ -25,9 +25,13 @@
 - external: ecs
   name: threat.indicator.first_seen
 - external: ecs
+  name: threat.indicator.last_seen
+- external: ecs
   name: threat.indicator.url.domain
 - external: ecs
   name: threat.indicator.url.full
+- external: ecs
+  name: threat.indicator.url.fragment
 - external: ecs
   name: threat.indicator.url.extension
 - external: ecs
@@ -44,3 +48,7 @@
   name: threat.indicator.ip
 - external: ecs
   name: threat.indicator.provider
+- external: ecs
+  name: threat.indicator.name
+- external: ecs
+  name: labels
