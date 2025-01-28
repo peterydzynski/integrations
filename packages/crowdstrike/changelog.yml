@@ -3,7 +3,7 @@
   changes:
     - description: Add handling for domain names in SMB events. Fix issues/gaps in handling of domain names in DNS events. Fix over setting of `url.scheme`.
       type: enhancement
-      link: https://github.com/elastic/integrations/pull/
+      link: https://github.com/elastic/integrations/pull/12509
 - version: "1.49.0"
   changes:
     - description: Add "preserve_original_event" tag to documents with `event.kind` manually set to "pipeline_error".
