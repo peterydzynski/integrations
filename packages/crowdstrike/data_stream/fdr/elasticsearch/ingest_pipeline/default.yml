@@ -2237,7 +2237,7 @@ processors:
       field: dns.question.domain
       target_field: dns.question.name
       ignore_missing: true
-      if: ctx.event?.action != null && ctx.event?.action.contains("DnsRequest")
+      if: ctx.event?.action != null && ctx.event.action.contains("DnsRequest")
   - rename:
       field: crowdstrike.DomainName
       target_field: dns.question.name
