@@ -2311,7 +2311,7 @@ processors:
       field: crowdstrike.DomainName
       target_field: destination
       ignore_missing: true
-      if: ctx.event?.action != null && ctx.event?.action.contains("SmbServerShareOpenedEtw")
+      if: ctx.event?.action != null && ctx.event.action.contains("SmbServerShareOpenedEtw")
   - rename:
       field: crowdstrike.DomainName
       target_field: destination.domain
