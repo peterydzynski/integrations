@@ -1,8 +1,14 @@
 # newer versions go on top
 - version: "1.50.0"
   changes:
-    - description: Add handling for domain names in SMB events. Fix issues/gaps in handling of domain names in DNS events. Fix over setting of `url.scheme`.
+    - description: Add handling for domain names in SMB events.
       type: enhancement
+      link: https://github.com/elastic/integrations/pull/12509
+    - description: Fix issues/gaps in handling of domain names in DNS events.
+      type: bugfix
+      link: https://github.com/elastic/integrations/pull/12509
+    - description: Fix over setting of `url.scheme`.
+      type: bugfix
       link: https://github.com/elastic/integrations/pull/12509
 - version: "1.49.0"
   changes:
