@@ -2158,7 +2158,7 @@ processors:
   - set:
       field: url.scheme
       value: http
-      if: ctx.crowdstrike?.DownloadPort != null && ctx.crowdstrike?.DownloadPort != 443
+      if: ctx.crowdstrike?.DownloadPort != null && ctx.crowdstrike.DownloadPort != 443
   - set:
       field: url.full
       value: "{{{url.scheme}}}://{{{server.address}}}{{{url.path}}}"
