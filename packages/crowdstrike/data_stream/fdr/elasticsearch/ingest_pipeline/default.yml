@@ -2242,7 +2242,7 @@ processors:
       field: crowdstrike.DomainName
       target_field: dns.question.name
       ignore_missing: true
-      if: ctx.event?.action != null && ctx.event?.action.contains("DnsRequest") && ctx.dns?.question?.name == null
+      if: ctx.event?.action != null && ctx.event.action.contains("DnsRequest") && ctx.dns?.question?.name == null
   - script:
       tag: dns-request-type-to-name
       description: Map decimal DNS request type to its name.
